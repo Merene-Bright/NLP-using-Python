@@ -1,1 +1,3 @@
 Challenge 1: Tokenization : You have a collection of tickets enclosed below. Apply tokenization using python nltk and generate a vocabulary of words in the ticket. 
+
+Challenge 2 :  Tokenization, FDIST, ngrams This is an extension to the Challenge 1  .  Once you have tokenized, find the n-grams using FDIST function. FDIST and ngrams will give you the laundry list but has a lot of noise, hence the objective is to extract the key frequently occurring ngrams (where n>1 and n<=4) based on n=1 most frequently occurring terms. Assume that you need to be able to present to the Customer key issues found in the ticket database. Please feel free to explore the inclusion of STOPWORDS in this solution
