@@ -1,0 +1,30 @@
+#Program to tokenize data in a file using nltk
+
+#Import the libraries required
+import nltk
+from nltk.tokenize import word_tokenize
+import pandas
+
+#File processing
+file = pandas.read_csv("D:\\1. Merene\\NLP\Challenge 1\\ticket_Data.csv")
+#Converting text to lower case and selecting only the 'Description' column
+file_new = file['Description'].str.lower()
+#Writing it into a new file
+file_new.to_csv(r'D:\\1. Merene\\NLP\Challenge 1\\ticket_Data_Descr.csv', index = False)
+
+#Reading data from the file and tokenizing it
+f = open("D:\\1. Merene\\NLP\Challenge 1\\ticket_Data_Descr.csv")
+doc=f.read()
+all_tokens = nltk.word_tokenize(doc)
+f.close()
+
+#Filtering the unique tokens
+unique_tokens = set()
+result = []
+for word in all_tokens:
+    if word not in unique_tokens:
+        unique_tokens.add(word)
+        result.append(word)
+		
+print(f"Number of tokens is", len(all_tokens))
+print(f"Number of unique tokens is", len(unique_tokens))
