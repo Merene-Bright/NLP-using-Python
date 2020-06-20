@@ -67,5 +67,6 @@ def n_grams_plot(c_frame,n):
 
 # Generating and plotting n-grams from 2 to 4
 for i in range(3):
+  print(f"********Most common",i+2,"Grams*********")
   r_fc_df=n_grams_freq(usefulWords,i+2)
   n_grams_plot(r_fc_df,10)
