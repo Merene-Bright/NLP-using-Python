@@ -1,21 +1,31 @@
 #*---------------------------------------------------------
-#To tokenize Ticket Description in a csv file using nltk
+#To identify if the new incoming requirement is a match 
+#to the ones implemented in the past
 #*---------------------------------------------------------
+#you need to select an appropriate measure to reflect the match percentage. You must include STOPWORDS in this solution.
 
 #Import the libraries required
 import nltk
+import spacy
 import pandas as pd
 from nltk.tokenize import word_tokenize
 
-#Converting text to lower case and selecting only the 'Description' column
+nlp = spacy.load('en',disable=['parser', 'tagger','ner'])
+	
+#Loading input file
 file = pd.read_csv("D:\\1. Merene\\NLP\Challenge 2\\ticket_Data.csv")
 file_new = file['Description'].str.lower()
+
 #Writing it into a new file
 file_new.to_csv(r'D:\\1. Merene\\NLP\Challenge 2\\ticket_Data_Descr.csv', header=None,index = False)
 #Reading data from the file and tokenizing it
 with open("D:\\1. Merene\\NLP\Challenge 2\\ticket_Data_Descr.csv") as f:
   doc=f.read()
-all_tokens = nltk.word_tokenize(doc)
+
+def tokenize_txt(in_text):
+  return (nltk.tokenize.word_tokenize(in_text))
+  
+all_tokens = tokenize_txt(doc)
 print(f"Number of tokens is", len(all_tokens))
 #*----------------------------------------------------------------------
 #To find ngrams using fdist
@@ -28,15 +38,18 @@ from nltk.collocations import BigramCollocationFinder
 from nltk.metrics import BigramAssocMeasures
 from nltk.corpus import stopwords
 
+# remove punctuations from the text
+filtered_words1 = ' '.join([w for w in all_tokens if not w in '\n\n \n\n\n!"-#$%&()--.*+,-/:;<=>?@[\\]^_`{|}~\t\n '])
+usefulWords1 = tokenize_txt(filtered_words1)
 # remove stopwords from the text
 stop_words = set(stopwords.words('english'))
-filtered_words = ' '.join([w for w in all_tokens if not w in stop_words])
+filtered_words = ' '.join([w for w in usefulWords1 if not w in stop_words])
+usefulWords = tokenize_txt(filtered_words)
+
 # Get the frequency distribution of the remaining words
-usefulWords = nltk.tokenize.word_tokenize(filtered_words)
 fdist = nltk.FreqDist(usefulWords)
 count_frame = pd.DataFrame(fdist, index =[0]).T
 count_frame.columns = ['Count']
-#count_frame = count_frame.sort_values('Count', ascending=False)
 
 print("\n")		
 print(f"Number of tokens is", len(usefulWords))
