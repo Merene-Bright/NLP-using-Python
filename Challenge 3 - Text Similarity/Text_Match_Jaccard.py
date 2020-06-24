@@ -25,7 +25,7 @@ cleaned_text = list(map(clean_string,requirements['Requirement']))
 
 #Reading new input requirement to check against the implemented ones
 in_requirement = pd.read_csv(("D:\\1. Merene\\NLP\Challenge 3\\Test_Input.csv"), engine='python', usecols=['Requirement'])
-print(f'The input requirement is "', in_requirement['Requirement'][0], '"','\n')
+print(f'The input requirement is:', '\n"',in_requirement['Requirement'][0],'"','\n')
 in_cleaned_text = list(map(clean_string,in_requirement['Requirement']))
 
 #key_requirement = input("Enter new requirement:")
@@ -55,9 +55,8 @@ if max_js == 0 :
     print(f'There is no similar requirement which has been implemented.')
 	#break
 else:
+    print(f'The MOST similar requirement(s) already implemented are:')
     for i in range(len(js_a)):
         if js_a[i] == max_js:
-            print(f'The MOST similar requirement already implemented is "', requirements['Requirement'][i], '"','\n')
-            print(f'The Jaccard similarity is ', js_a[i])
-
-		#A totally new requirement
+            print(f'"',requirements['Requirement'][i],'"')
+            print(f'The Jaccard similarity is ', js_a[i],'\n')
