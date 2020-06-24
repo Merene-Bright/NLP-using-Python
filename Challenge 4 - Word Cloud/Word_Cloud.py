@@ -73,6 +73,18 @@ usefulWords = clean_string(all_tokens)
 #print(cleaned_text)	
 #print(f"Number of tokens is", len(usefulWords))
 
+def n_grams_freq(text_list,n):
+  nGramsInDoc = []
+  nGrams = ngrams(text_list, n)
+  for grams in nGrams:
+    nWords = ' '.join(g for g in grams)
+    nGramsInDoc.append(nWords)
+ # Count the frequency of each n-gram
+  fdist = nltk.FreqDist(nGramsInDoc)
+  df_frame = pd.DataFrame(fdist, index =[0]).T
+  df_frame.columns = ['Count']
+  return df_frame
+
 def show_wordcloud(data, title = None):
     from nltk.corpus import stopwords
     stopwords_c = nltk.corpus.stopwords.words('english')
@@ -81,7 +93,7 @@ def show_wordcloud(data, title = None):
     wordcloud = WordCloud(
         background_color='beige',
         stopwords=stopwords_c,
-        max_words=50,
+        max_words=100,
         max_font_size=30, 
         scale=3,
         random_state=1 # random value
@@ -96,4 +108,5 @@ def show_wordcloud(data, title = None):
     plt.imshow(wordcloud)
     plt.show()
 
+r_fc_df=n_grams_freq(usefulWords,2)
 show_wordcloud(usefulWords)
