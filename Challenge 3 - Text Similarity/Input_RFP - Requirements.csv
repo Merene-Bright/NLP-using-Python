@@ -1,0 +1,11 @@
+SNO,ReqID,Requirement
+1,FR1.07,The System will apply business rules to facilitate the seamless and coordinated assignment to one or more plans aimed at meeting each Member’s health functional cultural and linguistic needs
+2,FR1.08,The System will establish unique date-specific plans for each program applicable to a Member to ensure correct benefit application
+3,FR1.09,The System will provide the flexibility to enroll Members beginning on any day of the month and enrollment in different and or multiple plans to occur on different days for the same Member.
+4,FR1.10,The System will maintain a record of benefit assignment(s) for Members and will specify the time periods for the benefits
+5,FR1.100,The Solution shall provide details on the Web portal on how to file a grievance
+6,FR1.109,The Solution shall allow the worker to enter information about the grievance into the Solution and shall send notifications including the information the worker has entered and shall allow the worker to close the grievance
+7,FR1.11,The System will apply appropriate benefit limitations for Members based on Federal and/or State-specific criteria for specific time periods
+8,FR1.12,The System will maintain a record of Member benefit limitation information
+9,FR1.13,The System will identify and track potential Medicare Buy-In Members according to State and CMS-defined criteria
+10,FR1.14,The System will maintain accurate and current Medicare eligibility information to ensure that all dual eligibles(Medicare/Medicaid) are identified and support proper processing of claims for dually eligibles
