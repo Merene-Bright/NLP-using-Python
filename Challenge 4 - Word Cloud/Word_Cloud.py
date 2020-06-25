@@ -40,9 +40,6 @@ chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
 text = '\n'.join(chunk for chunk in chunks if chunk)
 
 stext=sent_tokenize(text)
-nlp = spacy.load('en')
-tokens = nlp(text)
-
 #Initialize VADER so we can use it within our Python script
 sid = SentimentIntensityAnalyzer()
 # Calling the polarity_scores method on sid 
@@ -60,40 +57,24 @@ def tokenize_txt(in_text):
 all_tokens = tokenize_txt(pos_str.lower())
 
 #Cleaning text - Removing stopwords and punctuation & converting to lowercase
+stopwords_c = set(STOPWORDS)
+stopwords_c.update(["favorite","thing","book","will","three","one","immediately","last","night","come","going","good","food","dish","get","really","want","know","tsg","aim","news","network","movie","quote","like"])
 def clean_string(in_str):
 #  in_str = in_str.lower()
-  stop_words = nltk.corpus.stopwords.words('english')
- # newStopWords= ["favorite","thing","really","want","know","tsg","aim","news","network","movie","quote","like"]
- # stop_words.extend(newStopWords)
-  in_str = ' '.join([word for word in in_str if word not in stop_words])
-  in_str = ''.join([word for word in in_str if word not in string.punctuation])
-  return in_str.lower()
+    in_str = ' '.join([word for word in in_str if word not in stopwords_c])
+ # in_str = ' '.join([word for word in in_str if len(word)>3])
+    in_str = ''.join([word for word in in_str if word not in string.punctuation])
+    in_str = ''.join([word for word in in_str if word not in '!"''-#$%&()--.*+,-/:;<=>?@[\\]^_`{|}~\t\n'])
+    return in_str.lower()
 
 usefulWords = clean_string(all_tokens)
-#print(cleaned_text)	
-#print(f"Number of tokens is", len(usefulWords))
-
-def n_grams_freq(text_list,n):
-  nGramsInDoc = []
-  nGrams = ngrams(text_list, n)
-  for grams in nGrams:
-    nWords = ' '.join(g for g in grams)
-    nGramsInDoc.append(nWords)
- # Count the frequency of each n-gram
-  fdist = nltk.FreqDist(nGramsInDoc)
-  df_frame = pd.DataFrame(fdist, index =[0]).T
-  df_frame.columns = ['Count']
-  return df_frame
+usefulWords = tokenize_txt(usefulWords)
 
 def show_wordcloud(data, title = None):
-    from nltk.corpus import stopwords
-    stopwords_c = nltk.corpus.stopwords.words('english')
-    newStopWords= ["favorite","thing","book","food","dish","get","really","want","know","tsg","aim","news","network","movie","quote","like"]
-    stopwords_c.extend(newStopWords)
     wordcloud = WordCloud(
         background_color='beige',
         stopwords=stopwords_c,
-        max_words=100,
+        max_words=60,
         max_font_size=30, 
         scale=3,
         random_state=1 # random value
@@ -107,6 +88,6 @@ def show_wordcloud(data, title = None):
 
     plt.imshow(wordcloud)
     plt.show()
+    wordcloud.to_file("D:\\1. Merene\\NLP\Challenge 4\\C_W_Cloud_st.png")
 
-r_fc_df=n_grams_freq(usefulWords,2)
 show_wordcloud(usefulWords)
