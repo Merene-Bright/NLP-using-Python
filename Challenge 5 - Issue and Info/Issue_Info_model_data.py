@@ -22,33 +22,25 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.probability import FreqDist
 
 #Loading input file
-#ticket_data = pd.read_csv(("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data.csv"), engine='python', usecols=['Description'])
 csvfile = open("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data.csv",'r')
 reader = csv.reader(csvfile)
 
 def tokenize_txt(in_text):
   return (nltk.tokenize.word_tokenize(in_text))
   
-#Cleaning text - Removing stopwords and punctuation & converting to lowercase
+#Removing stopwords and punctuation & converting to lowercase
 stopwords_c = set(stopwords.words('english'))
-#stopwords_c.update(["quote","like"])
+stopwords_c.update(["got"])
 def clean_string(in_str):
-#  in_str = in_str.lower()
     in_str = ' '.join([word for word in in_str if word not in stopwords_c])
- # in_str = ' '.join([word for word in in_str if len(word)>3])
     in_str = ''.join([word for word in in_str if word not in string.punctuation])
  #   in_str = ''.join([word for word in in_str if word not in '!"''-#$%&()--.*+,-/:;<=>?@[\\]^_`{|}~\t\n'])
     return in_str.lower()
 
 sid = SentimentIntensityAnalyzer()
 #neg_str= [[i * j for j in range(len(list(myreader)))] for i in range(2)]
-#np_str= [[i * j for j in range(len(list(myreader)))] for i in range(2)]
 neg_str=[]
-neg_score=[]
-neg_tokens=[]
 pn_str=[]
-pn_score=[]
-pn_tokens=[]
 
 f = open("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_Neg_Word_Count.csv", 'w', newline='')
 filewriter=csv.writer(f)
@@ -60,9 +52,8 @@ for row in reader:
     #print(stext)
    # Calling the polarity_scores method on sid 
     for sent in [line.strip() for line in stext if line.strip() != ""]:
-    #sent_text=sent.string.strip()
         scores = sid.polarity_scores(sent)
-        #print(scores['compound'])
+        #If it is negative, it is considered as issue
         if scores['compound'] < 0:
             neg_str.append(sent)
             neg_token_text=tokenize_txt(sent)
@@ -70,36 +61,24 @@ for row in reader:
             neg_token_text=tokenize_txt(neg_clean_text)
             neg_tokens.append(neg_token_text)
             neg_fdist = nltk.FreqDist(neg_token_text)
-            neg_df= pd.DataFrame(neg_fdist, index =[0]).T
-            neg_df.columns = ['Word','Count']
-        #    neg_df.to_csv('D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_Neg_Word_Count.csv', mode='a', header=False)
             for word in neg_fdist:
                 with open('D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_Neg_Word_Count.csv', mode='a+', newline='') as neg_words:
                     filewriter=csv.writer(neg_words)
                     filewriter.writerow([sent,word,neg_fdist[word],'0'])
                     neg_words.close()
-            #print(sent)
-            #print(neg_df)
-            #neg_score.append(scores['compound'])
-            #neg_str = neg_str[n+1][0].append(sent)
-            #neg_str = neg_str[n+1][1].append(0)
+        #If it is positive or neutral, it is considered as information
         else:
             pn_str.append(sent)
-            #pn_cleaned_text=clean_string(sent)
-            #pn_clean_text=clean_string(pn_token_text)
-            #pn_token_text=tokenize_txt(pn_clean_text)
-            #pn_tokens.append(pn_token_text)
-            #pn_score.append(scores['compound'])
 print('Reached here')
 f = open("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_labelled_input.csv", 'w', newline='')
 filewriter=csv.writer(f)
 filewriter.writerow(['Sentence','Label'])
 f.close()
-for i in range(len(neg_str)):
-    with open("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_labelled_input.csv", 'a+', newline='') as neg_data:
+with open("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_labelled_input.csv", 'a+', newline='') as neg_data:
+    for i in range(len(neg_str)):
         filewriter=csv.writer(neg_data)
         filewriter.writerow([neg_str[i],'0'])
-        neg_data.close()
+    neg_data.close()
 for i in range(len(pn_str)):
     with open("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_labelled_input.csv", 'a+', newline='') as pn_data:
         filewriter=csv.writer(pn_data)
