@@ -61,15 +61,15 @@ for row in reader:
             neg_token_text=tokenize_txt(neg_clean_text)
             neg_tokens.append(neg_token_text)
             neg_fdist = nltk.FreqDist(neg_token_text)
-            for word in neg_fdist:
-                with open('D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_Neg_Word_Count.csv', mode='a+', newline='') as neg_words:
+            with open('D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_Neg_Word_Count.csv', mode='a+', newline='') as neg_words:
+                for word in neg_fdist:
                     filewriter=csv.writer(neg_words)
                     filewriter.writerow([sent,word,neg_fdist[word],'0'])
-                    neg_words.close()
+                neg_words.close()
         #If it is positive or neutral, it is considered as information
         else:
             pn_str.append(sent)
-print('Reached here')
+
 f = open("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_labelled_input.csv", 'w', newline='')
 filewriter=csv.writer(f)
 filewriter.writerow(['Sentence','Label'])
@@ -79,10 +79,10 @@ with open("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_labelled_input.csv", 'a+'
         filewriter=csv.writer(neg_data)
         filewriter.writerow([neg_str[i],'0'])
     neg_data.close()
-for i in range(len(pn_str)):
-    with open("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_labelled_input.csv", 'a+', newline='') as pn_data:
+with open("D:\\1. Merene\\NLP\Challenge 5\\ticket_Data_labelled_input.csv", 'a+', newline='') as pn_data:
+    for i in range(len(pn_str)):
         filewriter=csv.writer(pn_data)
         filewriter.writerow([pn_str[i],'1'])
-        pn_data.close()
+    pn_data.close()
  
 csvfile.close()
