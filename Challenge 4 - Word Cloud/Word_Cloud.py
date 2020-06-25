@@ -54,7 +54,7 @@ for sent in stext:
 def tokenize_txt(in_text):
   return (nltk.tokenize.word_tokenize(in_text))
   
-all_tokens = tokenize_txt(pos_str.lower())
+all_tokens = tokenize_txt(text.lower())
 
 #Cleaning text - Removing stopwords and punctuation & converting to lowercase
 stopwords_c = set(STOPWORDS)
@@ -68,7 +68,7 @@ def clean_string(in_str):
     return in_str.lower()
 
 usefulWords = clean_string(all_tokens)
-usefulWords = tokenize_txt(usefulWords)
+#usefulWords = tokenize_txt(usefulWords)
 
 def show_wordcloud(data, title = None):
     wordcloud = WordCloud(
