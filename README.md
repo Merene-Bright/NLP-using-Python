@@ -13,3 +13,8 @@ The task is multi fold
    You can choose to restrict to a certain number of words based on your analysis
    You can choose to remove the STOPWORDS from each text 
    The count based matrix that you build for the entire data set should be in a format such that it can be given as an input to any of the algorithm for training and testing.
+
+Challenge 6 :  This is an extension to the Challenge 5 .  Assume you are looking to build a model to predict if the text you are seeing is an issue or informational message. For e.g. job completed is an informational message whereas job abended is an issue.  The objective is to predict the issue.
+Build a TF-IDF based matrix along with the label
+Explore giving that input into a logistic regression to predict if the given text is an issue
+Do you see an improvement over Challenge 5 implementation?
