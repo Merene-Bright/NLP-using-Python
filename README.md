@@ -18,3 +18,11 @@ Challenge 6 :  This is an extension to the Challenge 5 .  Assume you are looking
 Build a TF-IDF based matrix along with the label
 Explore giving that input into a logistic regression to predict if the given text is an issue
 Do you see an improvement over Challenge 5 implementation?
+
+Challenge 7 : Implement the following on the built in reuters dataset in keras
+You can use Google Colab for the actual coding and submit the link in this yammer thread.....
+Please submit it by July 3rd.
+1. Tokenization 
+2. Padding
+3. Wordindex creation and reverse word index
+4. Embedding layer for word embeddings
