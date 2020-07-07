@@ -93,5 +93,5 @@ history_dict.keys()
 
 #Loss & Accuracy curves
 model_loss = pd.DataFrame(model.history.history)
-#model_loss.plot()
+model_loss.plot()
 
