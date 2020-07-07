@@ -34,6 +34,8 @@ print("Train_labels ", y_train.shape)
 print("Test_data ", X_test.shape)
 print("Test_labels ", y_test.shape)
 
+#*--------------------------------------------------------------------------------------------
+
 def vectorize_sequences(sequences, dimension=max_words):
     results = np.zeros((len(sequences), dimension))
     for i, sequence in enumerate(sequences):
@@ -67,6 +69,17 @@ one_hot_test_labels = to_one_hot(y_test)
 print("one_hot_train_labels ", one_hot_train_labels.shape)
 print("one_hot_test_labels ", one_hot_test_labels.shape)
 
+#*--------------------------------------------------------------------------------------------
+#Reducing data for training and creating validation data set
+x_val = x_train[:1000]
+partial_x_train = x_train[1000:]
+y_val = one_hot_train_labels[:1000]
+partial_y_train = one_hot_train_labels[1000:]
+print("x_val ", x_val.shape)
+print("y_val ", y_val.shape)
+print("partial_x_train ", partial_x_train.shape)
+print("partial_y_train ", partial_y_train.shape)
+
 #Build Model
 model = models.Sequential()
 model.add(layers.Dense(900, activation='relu', input_shape=(max_words,)))
@@ -77,21 +90,22 @@ model.add(layers.Dense(46, activation='softmax'))
 model.summary()
 
 #Fit/Train Model
-model.compile(optimizer='adam',loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='rmsprop',loss='categorical_crossentropy', metrics=['accuracy'])
 
 NumEpochs = 4
 BatchSize = 256
 
 early_stop = EarlyStopping(monitor='val_loss', min_delta=0, patience=0, verbose=1, mode='auto', baseline=None, restore_best_weights=False)
-history = model.fit(X_train, one_hot_train_labels, epochs=NumEpochs, batch_size=BatchSize, validation_data=(X_test, one_hot_test_labels),callbacks=[early_stop])
+#history = model.fit(X_train, one_hot_train_labels, epochs=NumEpochs, batch_size=BatchSize, validation_data=(X_test, one_hot_test_labels),callbacks=[early_stop])
 #history = model.fit(X_train, one_hot_train_labels, epochs=NumEpochs, batch_size=BatchSize, validation_data=(X_test, one_hot_test_labels))
-results = model.evaluate(X_test, one_hot_test_labels)
+history = model.fit(partial_x_train, partial_y_train, epochs=NumEpochs, batch_size=BatchSize, validation_data=(x_val, y_val),callbacks=[early_stop])
+results = model.evaluate(x_val, y_val)
+#results = model.evaluate(X_test, one_hot_test_labels)
+
 print("Test Loss ", results[0])
 print("Test Accuracy ", results[1]*100)
-history_dict = history.history
-history_dict.keys()
 
 #Loss & Accuracy curves
 model_loss = pd.DataFrame(model.history.history)
 model_loss.plot()
-
+#*--------------------------------------------------------------------------------------------
