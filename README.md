@@ -26,3 +26,10 @@ Please submit it by July 3rd.
 2. Padding
 3. Wordindex creation and reverse word index
 4. Embedding layer for word embeddings
+
+Challenge 8 : (NLP with Keras-TF2)
+Implement the following on the built in reuters dataset in keras
+1. Vectorization and Normalization
+2. One Hot encoding for labels using the built in to_categorical util
+3. Use these layers to build the model - Sequential, Dense, Dropout
+4. Achieve a model accuracy of around 82%
