@@ -26,7 +26,7 @@ from sklearn.metrics import classification_report,confusion_matrix
 max_words=10000
 
 #Loading the data from built in reuters dataset in keras
-(X_train, y_train), (X_test, y_test) = reuters.load_data(num_words=max_words,test_split=0.33)
+(X_train, y_train), (X_test, y_test) = reuters.load_data(num_words=max_words,test_split=0.25)
 #Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/reuters_word_index.json
 #557056/550378 [==============================] - 0s 1us/step
 print("Train_data ", X_train.shape)
@@ -69,7 +69,7 @@ print("one_hot_test_labels ", one_hot_test_labels.shape)
 
 #Build Model
 model = models.Sequential()
-model.add(layers.Dense(1024, activation='relu', input_shape=(max_words,)))
+model.add(layers.Dense(900, activation='relu', input_shape=(max_words,)))
 model.add(layers.Dropout(0.2))
 #model.add(layers.Dense(256, activation='relu'))
 #model.add(layers.Dropout(0.1))
@@ -79,7 +79,7 @@ model.summary()
 #Fit/Train Model
 model.compile(optimizer='adam',loss='categorical_crossentropy', metrics=['accuracy'])
 
-NumEpochs = 3
+NumEpochs = 4
 BatchSize = 256
 
 early_stop = EarlyStopping(monitor='val_loss', min_delta=0, patience=0, verbose=1, mode='auto', baseline=None, restore_best_weights=False)
@@ -93,4 +93,5 @@ history_dict.keys()
 
 #Loss & Accuracy curves
 model_loss = pd.DataFrame(model.history.history)
-model_loss.plot()
+#model_loss.plot()
+
