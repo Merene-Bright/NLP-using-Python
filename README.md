@@ -33,3 +33,9 @@ Implement the following on the built in reuters dataset in keras
 2. One Hot encoding for labels using the built in to_categorical util
 3. Use these layers to build the model - Sequential, Dense, Dropout
 4. Achieve a model accuracy of around 82%
+
+Challenge 9 (NLP with Deep Learning)
+Here are few things we can do now.  Please try to implement them.
+1. See if L1 / L2 regularizers can improve the accuracy.
+2. Separate 10% data from train data and use it as validation set.  Plot the accuracy for train data and validation data against the no of epochs.
+3. Use test data to predict the accuracy % of the model 
