@@ -134,7 +134,7 @@ print("Test Accuracy ", results[1]*100)
 #*--------------------------------------------------------------------------------------------
 #Plot the accuracy for train data and validation data against the no of epochs.
 model_loss = pd.DataFrame(model.history.history)
-#model_loss.plot()
+model_loss.plot()
 #*--------------------------------------------------------------------------------------------
 #Use test data to predict the accuracy % of the model 
 predictions = model.predict_classes(x_test)
