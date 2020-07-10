@@ -36,3 +36,6 @@ Here are few things we can do now.  Please try to implement them.
 1. See if L1 / L2 regularizers can improve the accuracy.
 2. Separate 10% data from train data and use it as validation set.  Plot the accuracy for train data and validation data against the no of epochs.
 3. Use test data to predict the accuracy % of the model 
+
+Challenge 10 - Text Sequence Generation
+From a list of dino names, objective is to build a sequence model using python or tensorflow that can create new dino names based on the seed input. Please use a character level generation.
