@@ -1,0 +1,15 @@
+With 100 Epochs:
+---------------
+Meroktenosaurus
+Alatausaurus
+Tacozanaskurus
+Faiceriaden
+Salo
+
+With 200 Epochs:
+---------------
+Meroktenosaurus
+Icychonamus
+Arus
+Grachtimuchois
+Eulorisaurus
