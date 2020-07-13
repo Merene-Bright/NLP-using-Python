@@ -2,21 +2,17 @@ Challenge 1: Tokenization : You have a collection of tickets. Apply tokenization
 
 Challenge 2 :  Tokenization, FDIST, ngrams This is an extension to the Challenge 1  .  Once you have tokenized, find the n-grams using FDIST function. Extract the key frequently occurring ngrams (where n>1 and n<=4) based on n=1 most frequently occurring terms. Please feel free to explore the inclusion of STOPWORDS in this solution
 
-Challenge 3 :  Assume the Customer has a collection of requirements that have been implemented in the past.  Customer is looking for a mechanism to identify if the new incoming requirement is a match to one of the implemented ones.  Enclosed is a sample set of requirements, come up with an approach to identify the match against the incoming requirement, you need to select an appropriate measure to reflect the match percentage. You must include STOPWORDS in this solution.
+Challenge 3 :  A Customer is looking for a mechanism to identify if the new incoming requirement is a match to one of the implemented ones.  Enclosed is a sample set of requirements, come up with an approach to identify the match against the incoming requirement, you need to select an appropriate measure to reflect the match percentage. You must include STOPWORDS in this solution.
 
 Challenge 4 :  You have access to a html file called leaderTalk.html which has leaders talk about different dimensions both personal and official, including why they think Cognizant is their favorite organization. The objective is to parse the content related to why they think Cognizant is their favorite organization and generate word cloud that outlines their perspective.
 
-Challenge 5 :  This is an extension to the Challenge 2  .  Assume you are looking to build a model to predict if the text you are seeing is an issue or informational message. For e.g. job completed is an informational message whereas job abended is an issue.  The objective is to predict the issue.  
-The task is multi fold
+Challenge 5 :  This is an extension to the Challenge 2  .  Assume you are looking to build a model to predict if the text you are seeing is an issue or informational message. 
    Generate the label for each data point to see if its informational or an issue
    Build a count based matrix for each issue which reflects the number of occurrence of each word in the   text along with the label
-   You can choose to restrict to a certain number of words based on your analysis
-   You can choose to remove the STOPWORDS from each text 
+   You can choose to restrict to a certain number of words based on your analysis. You can choose to remove the STOPWORDS from each text 
 The count based matrix that you build for the entire data set should be in a format such that it can be given as an input to any of the algorithm for training and testing.
 
-Challenge 6 :  This is an extension to the Challenge 5 . Build a TF-IDF based matrix along with the label
-Explore giving that input into a logistic regression to predict if the given text is an issue
-Do you see an improvement over Challenge 5 implementation?
+Challenge 6 :  This is an extension to the Challenge 5 . Build a TF-IDF based matrix along with the label. Explore giving that input into a logistic regression to predict if the given text is an issue. Do you see an improvement over Challenge 5 implementation?
 
 Challenge 7 : Implement the following on the built in reuters dataset in keras
 1. Tokenization 
@@ -39,3 +35,6 @@ Here are few things we can do now.  Please try to implement them.
 
 Challenge 10 - Text Sequence Generation
 From a list of dino names, objective is to build a sequence model using python or tensorflow that can create new dino names based on the seed input. Please use a character level generation.
+
+Challenge 11 - Use the yelp review data set available at https://archive.ics.uci.edu/ml/datasets/Sentiment+Labelled+Sentences
+Create a NLP text classification model using CNNs and see if you can achieve more than 80% accuracy on TEST data.
