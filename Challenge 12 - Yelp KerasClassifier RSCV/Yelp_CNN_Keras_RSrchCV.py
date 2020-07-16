@@ -85,9 +85,7 @@ test_accuracy = grid.score(X_test, y_test)
 
 #Publishing the results
 print('Results are as follows...')
-print('Best score', grid_result.best_score_)
-print('Best parameters:\n')
-print(grid_result.best_params_)
-print('Test accuracy', test_accuracy)
-
+print('Best score :', grid_result.best_score_)
+print('Best parameters :',grid_result.best_params_)
+print('Test accuracy :', test_accuracy)
 #*--------------------------------------------------------------------------------------------
