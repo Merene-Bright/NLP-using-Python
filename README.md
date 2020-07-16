@@ -38,3 +38,6 @@ From a list of dino names, objective is to build a sequence model using python o
 
 Challenge 11 - Use the yelp review data set available at https://archive.ics.uci.edu/ml/datasets/Sentiment+Labelled+Sentences
 Create a NLP text classification model using CNNs and see if you can achieve more than 80% accuracy on TEST data.
+
+Challenge 12 (NLP with Keras-TF2)
+This is an extension to Challenge 11 to improve the results further through Hyper-parameter optimization. Use KerasClassifier (to use k-fold cross validation etc.) and RandomizedSearchCV (to find the best combination of Hyper-parameters) and fine tune the model.
