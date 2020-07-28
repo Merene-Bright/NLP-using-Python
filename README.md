@@ -41,3 +41,5 @@ Create a NLP text classification model using CNNs and see if you can achieve mor
 
 Challenge 12 (NLP with Keras-TF2)
 This is an extension to Challenge 11 to improve the results further through Hyper-parameter optimization. Use KerasClassifier (to use k-fold cross validation etc.) and RandomizedSearchCV (to find the best combination of Hyper-parameters) and fine tune the model.
+
+Challenge 13 (NLP with Keras-TF2) - #Try to predict spam emails using RNNs (LSTM) in Keras
