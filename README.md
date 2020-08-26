@@ -45,3 +45,5 @@ This is an extension to Challenge 11 to improve the results further through Hype
 Challenge 13 (NLP with Keras-TF2) - #Try to predict spam emails using RNNs (LSTM) in Keras
 
 Challenge 14 (NLP with Keras-TF2) - #To generate text for a book 
+
+Challenge 15 (NLP with Keras-TF2) Implement one of the case studies using NLP from -> #https://mobidev.biz/blog/natural-language-processing-nlp-use-cases-business
