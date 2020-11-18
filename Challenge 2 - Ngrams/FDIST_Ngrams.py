@@ -8,6 +8,7 @@
 import nltk
 import spacy
 import pandas as pd
+import matplotlib.pyplot as plt
 from nltk.tokenize import word_tokenize
 
 nlp = spacy.load('en',disable=['parser', 'tagger','ner'])
@@ -47,9 +48,9 @@ filtered_words = ' '.join([w for w in usefulWords1 if not w in stop_words])
 usefulWords = tokenize_txt(filtered_words)
 
 # Get the frequency distribution of the remaining words
-fdist = nltk.FreqDist(usefulWords)
-count_frame = pd.DataFrame(fdist, index =[0]).T
-count_frame.columns = ['Count']
+#fdist = nltk.FreqDist(usefulWords)
+#count_frame = pd.DataFrame(fdist, index =[0]).T
+#count_frame.columns = ['Count']
 
 print("\n")		
 print(f"Number of tokens is", len(usefulWords))
