@@ -1,0 +1,23 @@
+Challenge 7 (NLP with Keras-TF2)
+ 
+Implement the following on the built in reuters dataset in keras
+You can use Google Colab for the actual coding and submit the link in this yammer thread.....
+Please submit it by July 3rd.
+1. Tokenization 
+2. Padding
+3. Wordindex creation and reverse word index
+4. Embedding layer for word embeddings
+ 
+Some useful links below:
+a. Tokenizaton and Padding - What are they and how to use keras to accomplish them?
+ 
+https://www.kdnuggets.com/2017/12/general-approach-preprocessing-text-data.html
+https://www.kdnuggets.com/2020/03/tensorflow-keras-tokenization-text-data-prep.html
+ 
+b. Word index and Reverse word index using keras - how to getback words from word indices? 
+ 
+https://stackoverflow.com/questions/41971587/how-to-convert-predicted-sequence-back-to-text-in-keras
+ 
+c. How to use the power of word embeddings - one of the greatest things in NLP - They provide representation of words and their relative meanings.
+ 
+https://machinelearningmastery.com/use-word-embedding-layers-deep-learning-keras/
